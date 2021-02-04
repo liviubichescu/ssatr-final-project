@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ro.avengers.client;
 
 import java.io.IOException;
@@ -11,12 +6,9 @@ import java.io.ObjectInputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import ro.avengers.models.MarvelCharacter;
 import ro.avengers.models.Planet;
 
@@ -471,10 +463,9 @@ public class Client extends javax.swing.JFrame {
         try {
             Socket socket = new Socket("127.0.0.1", 4050);
 
-            // get the input stream from the connected socket
             InputStream inputStream = socket.getInputStream();
-            // create a DataInputStream so we can read data from it.
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+            
             PrintWriter fluxOut = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
 
             fluxOut.println("getPlanets");
@@ -531,15 +522,13 @@ public class Client extends javax.swing.JFrame {
         try {
             Socket socket = new Socket("127.0.0.1", 4050);
 
-            // get the input stream from the connected socket
             InputStream inputStream = socket.getInputStream();
-            // create a DataInputStream so we can read data from it.
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+            
             PrintWriter fluxOut = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
 
             fluxOut.println(options);
 
-//        List<Object> listOfVillains = (List<Object>) objectInputStream.readObject();
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -548,10 +537,10 @@ public class Client extends javax.swing.JFrame {
     }//GEN-LAST:event_fight_one_vs_one_buttonActionPerformed
 
     private Object getConnectionRspObject(Socket socket, String option) throws IOException, ClassNotFoundException {
-        // get the input stream from the connected socket
+        
         InputStream inputStream = socket.getInputStream();
-        // create a DataInputStream so we can read data from it.
         ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+        
         PrintWriter fluxOut = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
 
         fluxOut.println(option);
